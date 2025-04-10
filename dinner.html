@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dinner Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #333333a9;
+        }
+
+        header {
+            background-image: url('https://images-origin.wallwiz.link/58860cc2dc1d3f00010acf6d_1');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            position: relative;
+            color: #fff;
+            font-size: 4.0rem;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .topnav {
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topnav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            font-size: x-large;
+        }
+
+        .topnav li {
+            margin-right: 20px;
+        }
+
+        .topnav a {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .topnav a:hover {
+            background-color: #000000;
+            border-radius: 5px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 1.0rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .card button {
+            background-color: #90ee90;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #76d976;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dinner</h1>
+    </header>
+
+    <div class="topnav">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+
+    <section class="menu">
+        <div class="card">
+            <img src="https://t4.ftcdn.net/jpg/03/89/28/83/240_F_389288343_iQmURai9wtSdbsyx2ImOx2q15HBF8Y2h.jpg" alt="Truffle & Kasuri Methi Breadsticks">
+            <div class="card-content">
+                <h2>Truffle & Kasuri Methi Breadsticks</h2>
+                <p><b>An herby, crisp twist to your garlic bread craving.<br>Calories: ~280 kcal (4 sticks)<br>Carbs: 28g</b></p>
+                <div class="price">Price: ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://creativescookery.com/wp-content/uploads/2024/09/Pillsbury-Biscuit-Garlic-Butter-Cheese-Bombs-Recipe-2-260x195.webp" alt="Garlic Naan Cheese Bombs">
+            <div class="card-content">
+                <h2>Garlic Naan Cheese Bombs</h2>
+                <p><b>Poppable bites of molten masala cheese inside soft naan.<br>Calories: ~310 kcal (3 pieces)<br>Carbs: 28g</b></p>
+                <div class="price">Price: ₹160</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/premium-photo/tandoori-paneer-pizza-side-view_1170794-93971.jpg" alt="Tandoori Paneer Flatbread Pizza">
+            <div class="card-content">
+                <h2>Tandoori Paneer Flatbread Pizza</h2>
+                <p><b>Wood-fired feel, tandoori thrill.<br>Calories: ~420 kcal<br>Carbs: 38g</b></p>
+                <div class="price">Price: ₹90</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://addapinch.com/wp-content/blogs.dir/3/files/2014/02/perfect-chicken-quesadillas-recipe-DSC_2509-640x426.jpg" alt="Paneer Bhurji Quesadilla">
+            <div class="card-content">
+                <h2>Paneer Bhurji Quesadilla</h2>
+                <p><b>Desi scrambled paneer in a cheesy, griddled hug.<br>Calories: ~430 kcal<br>Carbs: 32g</b></p>
+                <div class="price">Price: ₹40</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/free-photo/freshness-spice-homemade-guacamole-taco-meal-generated-by-artificial-intelligence_188544-110243.jpg" alt="Schezwan Soya Nachos">
+            <div class="card-content">
+                <h2>Schezwan Soya Nachos</h2>
+                <p><b>Fiery fusion on a crunchy canvas.<br>Calories: ~410 kcal<br>Carbs: 34g</b></p>
+                <div class="price">Price: ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images-sm-sg.imgix.net/restaurants/149/images/b1a15d78-93c6-4e73-b915-7224998a1cfe.jpg?w=928&h=522&fit=crop" alt="Exotic veg sizzler">
+            <div class="card-content">
+                <h2>Exotic Veg Sizzler</h2>
+                <p><b>Bold, beautiful, and built to sizzle — a showstopper on your plate.<br>Calories: 540 kcal<br>Carbs: 48g</b></p>
+                <div class="price">Price: ₹100</div>
+                <button>Add</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

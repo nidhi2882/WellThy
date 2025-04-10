@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessert Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #333333a9;
+        }
+
+        header {
+            background-image: url('https://images7.alphacoders.com/873/873362.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            position: relative;
+            color: #fff;
+            font-size: 4.0rem;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .topnav {
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            font-style: bold;
+        }
+
+        .topnav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            font-size: x-large;
+        }
+
+        .topnav li {
+            margin-right: 20px;
+        }
+
+        .topnav a {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .topnav a:hover {
+            background-color: #000000;
+            border-radius: 5px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 1.0rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .card button {
+            background-color: #90ee90;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #76d976;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dessert</h1>
+    </header>
+
+    <div class="topnav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+
+    <section class="menu">
+        <div class="card">
+            <img src="https://static.india.com/wp-content/uploads/2024/07/chocolate-walnut-brownie.jpg?impolicy=Medium_Widthonly&w=500&h=375" alt="Date & Nut Fudge Brownie (Gluten-Free)" />
+            <div class="card-content">
+                <h2>Date & Nut Fudge Brownie (Gluten-Free)</h2>
+                <p><b>Fudgy, nutty, naturally sweet<br>Calories : ~290 kcal<br> Carbs:24g<br></b></p>
+                <div class="price">Price : ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://bonnibakery.com/wp-content/uploads/2022/07/Pistachio-Cannoli_162-1-819x1024.jpg" alt="Kesar Pista Cannoli" />
+            <div class="card-content">
+                <h2>Kesar Pista Cannoli</h2>
+                <p><b>Italy rolled in Indian richness.<br>Calories : ~290 kcal (3 pieces)<br> Carbs : 28 g<br></b></p>
+                <div class="price">Price : ₹160</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.ricardocuisine.com/services/recipes/496x670_158797360541b2e7062e78.jpg" alt="Espresso Almond Cheesecake" />
+            <div class="card-content">
+                <h2>Espresso Almond Cheesecake</h2>
+                <p><b>Bold, smooth, and bean-to-bake brilliance.<br>Calories : ~310 kcal<br> Carbs : 22g<br></b></p>
+                <div class="price">Price : ₹90</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ifyougiveablondeakitchen.com/wp-content/uploads/2022/07/easy-banana-cream-pie-1367x2048.webp" alt="Banana Pie" />
+            <div class="card-content">
+                <h2>Banana Pie</h2>
+                <p><b>Baked to the golden edge.<br>Calories : 330 kcal<br> Carbs : 22g<br></b></p>
+                <div class="price">Price : ₹40</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://static.toiimg.com/thumb/53520122.cms?width=1200&height=900" alt="Almond Carnival Ice-cream" />
+            <div class="card-content">
+                <h2>Almond Carnival Ice-cream</h2>
+                <p><b>Crackly top. Gooey heart.<br>Calories : 290 kcal<br> Carbs: 34g<br></b></p>
+                <div class="price">Price : ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.ricardocuisine.com/services/recipes/496x670_croissant1.jpg" alt="Butter Croissant" />
+            <div class="card-content">
+                <h2>Butter Croissant</h2>
+                <p><b>Flaky layers. Bold flavors.<br>Calories: 300kcal<br> Carbs:30g<br></b></p>
+                <div class="price">Price : ₹100</div>
+                <button>Add</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

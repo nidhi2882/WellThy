@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to WellThy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    .topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  z-index: 999;
+  font-size: x-large;
+  font-weight: bold;
+  background-color: #000000;
+}
+
+    .topnav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+      font-size: x-large;
+    }
+
+    .topnav li {
+      margin-right: 20px;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    .topnav a:hover {
+      background-color: #a84295;
+      border-radius: 5px;
+    }
+
+    .hero-section {
+      background: url('https://static.vecteezy.com/system/resources/previews/037/236/579/non_2x/ai-generated-beautuful-fast-food-background-with-copy-space-free-photo.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      padding: 150px 50px 100px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-section h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .hero-section h3 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 24px;
+      max-width: 800px;
+      line-height: 1.5;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .button {
+      background-color: #FFA500;
+      border: none;
+      color: white;
+      padding: 15px 35px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #e59400;
+    }
+
+    .second-section {
+      background-image: url("second-section.jpg");
+      background-repeat: no-repeat; 
+      background-size: cover;
+      padding: 100px 50px;
+      text-align: center;
+      opacity: 0.895;
+    }
+
+    .second-section h1 {
+      font-size: 45px;
+      margin-bottom: 30px;
+    }
+
+    .second-section p {
+      font-size: 22px;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .feature-card {
+      background-color: #f8f8f8;
+      border-radius: 15px;
+      padding: 30px 25px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      color: black;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      font-size: 18px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 120px 30px 80px;
+      }
+
+      .hero-section h1 {
+        font-size: 40px;
+      }
+
+      .hero-section h3 {
+        font-size: 24px;
+      }
+
+      .hero-section p {
+        font-size: 20px;
+      }
+
+      .button {
+        font-size: 20px;
+        padding: 12px 25px;
+      }
+
+      .topnav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topnav li {
+        margin-bottom: 20px;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topnav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div class="hero-section" id="home">
+    <h1>Welcome to WellThy 🍽</h1>
+    <h3>Where Wellness Meets Delicious 🥗🍔</h3>
+    <p>At WellThy, we believe you shouldn’t have to choose between food that tastes good 😋 and food that feels good. Our menu is designed for those who care about what’s on their plate 🍛—and how it fuels their body!</p>
+    <a href="#order" class="button">Order now</a>
+  </div>
+
+  <div class="second-section" id="order">
+    <h1>Why WellThy? 🌟</h1>
+    <p>
+      We believe that food should not only taste good 🍽️—it should do good 💪. That’s why we’re transforming restaurant menus by making nutritional information accessible and easy to understand 📊. Whether you're watching your calories 🔥, tracking macros ⚖️, or just want to eat more mindfully 🧠, we’ve got you covered ✅.
+    </p>
+
+    <div class="features">
+      <div class="feature-card">
+        <h2>🌿 Feel-Good Food</h2>
+        <p>Tasty meals made to nourish, not just fill.</p>
+      </div>
+      <div class="feature-card">
+        <h2>📊 Nutrition First</h2>
+        <p>All meals come with calorie and macronutrient breakdowns.</p>
+      </div>
+      <div class="feature-card">
+        <h2>✅ Smarter Choices</h2>
+        <p>Eat what you love, while staying mindful of your health.</p>
+      </div>
+    </div>
+  </div>
+  <footer style="background-color: #222; color: #fff; padding: 40px 50px; text-align: center;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <h2 style="font-size: 24px; margin-bottom: 10px;">WellThy</h2>
+      <p style="font-size: 16px; margin-bottom: 30px;">
+        Nourishing your body and your cravings — one bite at a time.
+      </p>
+  
+      <div style="margin-bottom: 20px;">
+        <a href="#" style="color: #fff; margin: 0 10px; font-size: 20px;">🔗</a>
+        <a href="#" style="color: #fff; margin: 0 10px; font-size: 20px;">📘</a>
+        <a href="#" style="color: #fff; margin: 0 10px; font-size: 20px;">📸</a>
+      </div>
+  
+      <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+    </div>
+  </footer>
+   
+</body>
+</html>

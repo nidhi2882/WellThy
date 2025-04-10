@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunch Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      color: #333;
+      background-color: #333333a9;
+    }
+
+    header {
+      background-image: url('https://wallpapers.com/images/featured/lunch-background-nma33l5qphyng7rh.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      position: relative;
+      color: #fff;
+      font-size: 4rem;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .topnav {
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+      font-style: bold;
+      background-color: #444;
+    }
+
+    .topnav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+      font-size: x-large;
+    }
+
+    .topnav li {
+      margin-right: 20px;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    .topnav a:hover {
+      background-color: #000;
+      border-radius: 5px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #222;
+      font-size: 20px;
+    }
+
+    .card button {
+      background-color: #90ee90;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #76d976;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lunch</h1>
+  </header>
+
+  <nav class="topnav">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <section class="menu">
+    <div class="card">
+      <img src="https://img.freepik.com/premium-photo/indian-grilled-paneer-tikka-beautifully-plated-dish_167857-55135.jpg" alt="BBQ paneer masala">
+      <div class="card-content">
+        <h2>BBQ Paneer Masala</h2>
+        <p><b>Smoky, spiced paneer indulgence with a barbeque twist.<br>Calories: 396 kcal<br>Carbs: 25g</b></p>
+        <div class="price">Price : ₹150</div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.slurrp.com/prod/recipe_images/whiskaffair/badami-chicken-curry-1617379830_YJ7FTX5P9KOXUFJWA522.webp?impolicy=slurrp-20210601&width=1200&height=900&q=75" alt="Badami Korma">
+      <div class="card-content">
+        <h2>Badami Korma</h2>
+        <p><b>A royal blend of almonds and spice in every creamy spoonful.<br>Calories: 450 kcal<br>Carbs: 40g</b></p>
+        <div class="price">Price : ₹160</div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://t3.ftcdn.net/jpg/09/45/46/72/360_F_945467264_13rCx2nGR9wb9wrVt2g2FEFB4tE4b8sW.jpg" alt="Olive cheese paratha">
+      <div class="card-content">
+        <h2>Olive Cheese Paratha</h2>
+        <p><b>Cheesy comfort meets a Mediterranean zing.<br>Calories: ~430 kcal<br>Carbs: 30g</b></p>
+        <div class="price">Price : ₹90</div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://t3.ftcdn.net/jpg/08/57/12/32/360_F_857123215_FL6fJK0bp5ZGlbDy2HEK9OhZOW8NA6Ez.jpg" alt="Garlic Naan">
+      <div class="card-content">
+        <h2>Garlic Naan</h2>
+        <p><b>Fluffy naan infused with garlicky warmth.<br>Calories: ~270 kcal<br>Carbs: 39g</b></p>
+        <div class="price">Price : ₹40</div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://drewandcole.com/wp-content/uploads/2019/05/drew-and-cole-pressure-king-pro-dal-makhani-5L-menu.jpg" alt="Dal Makhani">
+      <div class="card-content">
+        <h2>Dal Makhani</h2>
+        <p><b>A creamy classic with a slow-cooked legacy.<br>Calories: ~320 kcal<br>Carbs: 26g</b></p>
+        <div class="price">Price : ₹150</div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://www.indianveggiedelight.com/wp-content/uploads/2022/12/indian-lemon-quinoa-recipe.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Lemon Quinoa Rice</h2>
+        <p><b>Zesty freshness with a protein-powered grain.<br>Calories: ~240 kcal<br>Carbs: 30g</b></p>
+        <div class="price">Price : ₹100</div>
+        <button>Add</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

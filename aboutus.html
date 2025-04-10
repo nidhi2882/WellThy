@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | WellThy</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      margin: 0;
+      padding-top: 60px; /* To account for fixed navbar */
+    }
+    .topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 20px;
+  z-index: 999;
+  font-size: x-large;
+  font-weight: bold;
+  background-color: #000000;
+}
+
+    .topnav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+      font-size: x-large;
+    }
+
+    .topnav li {
+      margin-right: 20px;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    .topnav a:hover {
+      background-color: #a84295;
+      border-radius: 5px;
+    }
+    
+    @media (max-width: 768px) {
+      nav.topnav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topnav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .topnav li {
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .topnav a {
+        width: 100%;
+      }
+    }
+
+    .header-image {
+      width: 100%;
+      height: 700px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-container {
+      max-width: 1500px;
+      margin: -50px auto 0 auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
+      z-index: 1;
+      font-size: x-large;
+    }
+
+    h1, h2, h3 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      border-top: 2px solid #cce3d8;
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #ff8c00;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      flex: 1 1 250px;
+      background-color: #f0faf9;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .team-member h3 {
+      margin: 10px 0 5px;
+      color: #2e7d32;
+    }
+
+    .team-member p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        padding: 25px;
+        margin-top: -30px;
+      }
+
+      .team {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="topnav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Header Image -->
+  <img src="about_us" alt="About Us Image" class="header-image" />
+
+  <!-- Main Content -->
+  <div class="about-container">
+    <h1>About Us 🍃</h1>
+
+    <h2>At <span class="highlight">WellThy</span>, we are on a mission to redefine healthy eating</h2>
+    <p>
+      We blend <strong>nutrition 🥦</strong> with <strong>delicious flavors 😋</strong> because eating well shouldn't be a compromise—
+      it should be a <strong>celebration of taste and health 🎉</strong>.
+    </p>
+
+    <ul>
+      <li><strong>Fresh Ingredients</strong> – Sourced mindfully for maximum nourishment.</li>
+      <li><strong>Balanced Nutrition</strong> – Every dish includes calories & macros.</li>
+      <li><strong>Irresistible Taste</strong> – Healthy food should be exciting too!</li>
+    </ul>
+
+    <h3>
+      Whether you're a <strong>fitness enthusiast 🏋</strong>, a <strong>mindful eater 🥗</strong>, or just looking for a
+      <strong>tasty, guilt-free treat 🍽</strong>, WellThy has something for you. Join us on this <strong>flavorful journey to wellness! 🚀</strong>
+    </h3>
+
+    <h2>Our Vision 🌍✨</h2>
+    <h3>
+      It's time to <strong>redefine restaurant menus</strong> by making <strong>transparency the norm</strong>.
+      Every dish comes with <strong>calorie counts 🔢</strong>, <strong>macro breakdowns 🥑</strong>, and
+      <strong>nutritional insights 📊</strong>, so you can make <strong>informed, guilt-free choices</strong>.
+    </h3>
+
+    <ul>
+      <li>No more guesswork. Know what you eat. 🍽</li>
+      <li>Smart eating made simple. 💡</li>
+      <li>Fuel your goals. Because your health matters. 💪</li>
+    </ul>
+
+    <h3>
+      Our mission is to set a new standard for dining—where restaurants don’t just serve food, but also serve
+      <strong>knowledge, wellness, and balance</strong>.
+    </h3>
+
+    <h2>Meet the Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <h3>Nidhi Modi</h3>
+        <p>Web Designer</p>
+      </div>
+      <div class="team-member">
+        <h3>Ruchi Master</h3>
+        <p>Nutritionist</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 WellThy. All rights reserved. | Eat Well. Live Well. 💚
+  </footer>
+
+</body>
+</html>
