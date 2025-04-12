@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessert Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #333333a9;
+        }
+
+        header {
+            background-image: url('https://images7.alphacoders.com/873/873362.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            position: relative;
+            color: #fff;
+            font-size: 4.0rem;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .navbar {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+     font-style: bold;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 25px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #b8106c;
+        font-style: bold;
+    }
+
+    /* Hamburger menu checkbox */
+    .nav-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #000000;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+
+      .nav-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 1.0rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .card button {
+            background-color: #90ee90;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #76d976;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dessert</h1>
+    </header>
+
+    <div class="navbar">
+        <div class="logo">WellThy</div>
+    
+        <!-- Toggle Button -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+    
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="contactus.html">Contact Us</a>
+          <a href="aboutus.html">About Us</a>
+        </div>
+      </div>
+
+    <section class="menu">
+        <div class="card">
+            <img src="https://static.india.com/wp-content/uploads/2024/07/chocolate-walnut-brownie.jpg?impolicy=Medium_Widthonly&w=500&h=375" alt="Date & Nut Fudge Brownie (Gluten-Free)" />
+            <div class="card-content">
+                <h2>Date & Nut Fudge Brownie (Gluten-Free)</h2>
+                <p><b>Fudgy, nutty, naturally sweet<br>Calories : ~290 kcal<br> Carbs:24g<br></b></p>
+                <div class="price">Price : ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://bonnibakery.com/wp-content/uploads/2022/07/Pistachio-Cannoli_162-1-819x1024.jpg" alt="Kesar Pista Cannoli" />
+            <div class="card-content">
+                <h2>Kesar Pista Cannoli</h2>
+                <p><b>Italy rolled in Indian richness.<br>Calories : ~290 kcal (3 pieces)<br> Carbs : 28 g<br></b></p>
+                <div class="price">Price : ₹160</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.ricardocuisine.com/services/recipes/496x670_158797360541b2e7062e78.jpg" alt="Espresso Almond Cheesecake" />
+            <div class="card-content">
+                <h2>Espresso Almond Cheesecake</h2>
+                <p><b>Bold, smooth, and bean-to-bake brilliance.<br>Calories : ~310 kcal<br> Carbs : 22g<br></b></p>
+                <div class="price">Price : ₹90</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ifyougiveablondeakitchen.com/wp-content/uploads/2022/07/easy-banana-cream-pie-1367x2048.webp" alt="Banana Pie" />
+            <div class="card-content">
+                <h2>Banana Pie</h2>
+                <p><b>Baked to the golden edge.<br>Calories : 330 kcal<br> Carbs : 22g<br></b></p>
+                <div class="price">Price : ₹40</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://static.toiimg.com/thumb/53520122.cms?width=1200&height=900" alt="Almond Carnival Ice-cream" />
+            <div class="card-content">
+                <h2>Almond Carnival Ice-cream</h2>
+                <p><b>Crackly top. Gooey heart.<br>Calories : 290 kcal<br> Carbs: 34g<br></b></p>
+                <div class="price">Price : ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.ricardocuisine.com/services/recipes/496x670_croissant1.jpg" alt="Butter Croissant" />
+            <div class="card-content">
+                <h2>Butter Croissant</h2>
+                <p><b>Flaky layers. Bold flavors.<br>Calories: 300kcal<br> Carbs:30g<br></b></p>
+                <div class="price">Price : ₹100</div>
+                <button>Add</button>
+            </div>
+        </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+          <!-- Logo and Name -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+            <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+          </div>
+      
+          <!-- Tagline -->
+          <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+            Nourishing your body and your cravings — one bite at a time.
+          </p>
+      
+          <div style="margin-bottom: 25px;">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+      
+      
+          <!-- Copyright -->
+          <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dinner Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #333333a9;
+        }
+
+        header {
+            background-image: url('https://images-origin.wallwiz.link/58860cc2dc1d3f00010acf6d_1');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            position: relative;
+            color: #fff;
+            font-size: 4.0rem;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .navbar {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-style: bold;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 25px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #b8106c;
+        font-style: bold;
+    }
+
+    /* Hamburger menu checkbox */
+    .nav-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #000000;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+
+      .nav-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 1.0rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .card button {
+            background-color: #90ee90;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #76d976;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dinner</h1>
+    </header>
+
+    <div class="navbar">
+        <div class="logo">WellThy</div>
+    
+        <!-- Toggle Button -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+    
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="contactus.html">Contact Us</a>
+          <a href="aboutus.html">About Us</a>
+        </div>
+      </div>
+
+    <section class="menu">
+        <div class="card">
+            <img src="https://t4.ftcdn.net/jpg/03/89/28/83/240_F_389288343_iQmURai9wtSdbsyx2ImOx2q15HBF8Y2h.jpg" alt="Truffle & Kasuri Methi Breadsticks">
+            <div class="card-content">
+                <h2>Truffle & Kasuri Methi Breadsticks</h2>
+                <p><b>An herby, crisp twist to your garlic bread craving.<br>Calories: ~280 kcal (4 sticks)<br>Carbs: 28g</b></p>
+                <div class="price">Price: ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://creativescookery.com/wp-content/uploads/2024/09/Pillsbury-Biscuit-Garlic-Butter-Cheese-Bombs-Recipe-2-260x195.webp" alt="Garlic Naan Cheese Bombs">
+            <div class="card-content">
+                <h2>Garlic Naan Cheese Bombs</h2>
+                <p><b>Poppable bites of molten masala cheese inside soft naan.<br>Calories: ~310 kcal (3 pieces)<br>Carbs: 28g</b></p>
+                <div class="price">Price: ₹160</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/premium-photo/tandoori-paneer-pizza-side-view_1170794-93971.jpg" alt="Tandoori Paneer Flatbread Pizza">
+            <div class="card-content">
+                <h2>Tandoori Paneer Flatbread Pizza</h2>
+                <p><b>Wood-fired feel, tandoori thrill.<br>Calories: ~420 kcal<br>Carbs: 38g</b></p>
+                <div class="price">Price: ₹90</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://addapinch.com/wp-content/blogs.dir/3/files/2014/02/perfect-chicken-quesadillas-recipe-DSC_2509-640x426.jpg" alt="Paneer Bhurji Quesadilla">
+            <div class="card-content">
+                <h2>Paneer Bhurji Quesadilla</h2>
+                <p><b>Desi scrambled paneer in a cheesy, griddled hug.<br>Calories: ~430 kcal<br>Carbs: 32g</b></p>
+                <div class="price">Price: ₹40</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/free-photo/freshness-spice-homemade-guacamole-taco-meal-generated-by-artificial-intelligence_188544-110243.jpg" alt="Schezwan Soya Nachos">
+            <div class="card-content">
+                <h2>Schezwan Soya Nachos</h2>
+                <p><b>Fiery fusion on a crunchy canvas.<br>Calories: ~410 kcal<br>Carbs: 34g</b></p>
+                <div class="price">Price: ₹150</div>
+                <button>Add</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images-sm-sg.imgix.net/restaurants/149/images/b1a15d78-93c6-4e73-b915-7224998a1cfe.jpg?w=928&h=522&fit=crop" alt="Exotic veg sizzler">
+            <div class="card-content">
+                <h2>Exotic Veg Sizzler</h2>
+                <p><b>Bold, beautiful, and built to sizzle — a showstopper on your plate.<br>Calories: 540 kcal<br>Carbs: 48g</b></p>
+                <div class="price">Price: ₹100</div>
+                <button>Add</button>
+            </div>
+        </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+          <!-- Logo and Name -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+            <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+          </div>
+      
+          <!-- Tagline -->
+          <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+            Nourishing your body and your cravings — one bite at a time.
+          </p>
+      
+          <!-- Social Media Icons -->
+          <div style="margin-bottom: 25px;">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+      
+      
+          <!-- Copyright -->
+          <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+</html>

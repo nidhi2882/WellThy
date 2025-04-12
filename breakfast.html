@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakfast Menu</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+      body {
+        color: #333;
+        background-color: #cde3fa;
+      }
+      header {
+        background-image: url('https://wallpaper.forfun.com/fetch/fb/fb9ba40aed17ce2b69c36effc16bda0d.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        position: relative;
+      }
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      header h1 {
+        position: relative;
+        color: #fff;
+        font-size: 6.0rem;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 15px;
+      }
+      .card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+      .card p {
+        font-size: 1.0rem;
+        color: #555;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-weight: bold;
+        color: #222;
+        font-size: 20px;
+      }
+      .card button {
+        background-color: #90ee90;
+        /* Light green */
+        border: none;
+        padding: 10px 15px;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .card button:hover {
+        background-color: #76d976;
+        /* Slightly darker on hover */
+      }
+      .navbar {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-style: bold;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 25px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #b8106c;
+      font-style: bold;
+    }
+
+    /* Hamburger menu checkbox */
+    .nav-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #000000;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+
+      .nav-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">WellThy</div>
+  
+      <!-- Toggle Button -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+  
+      <!-- Navigation Links -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="contactus.html">Contact Us</a>
+        <a href="aboutus.html">About Us</a>
+      </div>
+    </div>
+    <header>
+      <h1>Breakfast</h1>
+    </header>
+    <section class="menu">
+      <div class="card">
+        <img src="https://t4.ftcdn.net/jpg/10/60/69/39/360_F_1060693986_kOf7vbOLCJmX9yF32o04fFxJgyPJSEcn.jpg" alt="Poha" />
+        <div class="card-content">
+          <h2>Poha</h2>
+          <p>
+            <b>
+              Light, tasty, and energizing!<br />
+              Calories : 250-300 kcal<br />
+              Carbs : 45g
+            </b>
+          </p>
+          <div class="price">Price : ₹40</div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.shutterstock.com/image-photo/aloo-paratha-popular-north-indian-600nw-2547389027.jpg" alt="Aloo paratha" />
+        <div class="card-content">
+          <h2>Aloo paratha</h2>
+          <p>
+            <b>
+              Warm, hearty, and delicious!<br />
+              Calories : 300-350 kcal<br />
+              Carbs : 50 g<br />
+            </b>
+          </p>
+          <div class="price">Price : ₹35</div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://thumbs.dreamstime.com/b/upma-rava-made-samolina-most-famous-south-indian-breakfast-item-which-arranged-black-plate-garnished-fried-216111554.jpg" alt="Upma" />
+        <div class="card-content">
+          <h2>Upma</h2>
+          <p>
+            <b>
+              Savory comfort in every bite!<br />
+              Calories : 200kcal<br />
+              Carbs : 40g<br />
+            </b>
+          </p>
+          <div class="price">Price : ₹40</div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://c.ndtvimg.com/gws/ms/6-idli-recipes-will-change-everything/assets/1.jpeg?1722254995" alt="Idli" />
+        <div class="card-content">
+          <h2>Idli</h2>
+          <p>
+            <b>
+              Soft, fluffy, and perfectly paired!<br />
+              Calories : 150kcal<br />
+              Carbs : 30g<br />
+            </b>
+          </p>
+          <div class="price">Price : ₹70</div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://t4.ftcdn.net/jpg/01/89/45/21/360_F_189452136_gJBG4ZRXY9NnZZCGV2s8QhObmpeerJTO.jpg" alt="Dosa" />
+        <div class="card-content">
+          <h2>Dosa</h2>
+          <p>
+            <b>
+              Crispy, flavorful, and filling<br />
+              Calories:300-350 kcal<br />
+              Carbs: 35g<br />
+            </b>
+          </p>
+          <div class="price">Price : ₹150</div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://c.ndtvimg.com/2023-01/mtru06c8_thepla_625x300_06_January_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=675" alt="Methi thepala" />
+        <div class="card-content">
+          <h2>Methi thepala</h2>
+          <p>
+            <b>
+              Healthy, spicy, and satisfying!<br />
+              Calories: 225kcal<br />
+              Carbs:35g<br />
+            </b>
+          </p>
+          <div class="price">Price : ₹120</div>
+          <button>Add</button>
+        </div>
+      </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+      <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <!-- Logo and Name -->
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+          <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+        </div>
+    
+        <!-- Tagline -->
+        <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+          Nourishing your body and your cravings — one bite at a time.
+        </p>
+    
+        <!-- Social Media Icons -->
+        <div style="margin-bottom: 25px;">
+          <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    
+    
+        <!-- Copyright -->
+        <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
