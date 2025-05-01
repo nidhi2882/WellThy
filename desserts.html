@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dessert Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      color: #333;
+      background-color: #333333a9;
+    }
+
+    header {
+      background-image: url('https://images7.alphacoders.com/873/873362.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+      margin-top: 83.5px;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      position: relative;
+      color: #fff;
+      font-size: 4rem;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .navbar {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 25px;
+      transition: 0.3s;
+      font-style: bold;
+    }
+
+    .nav-links a:hover {
+      color: #b8106c;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #000;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        padding: 10px 0;
+      }
+
+      .nav-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 50px 20px;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      background-color: #90ee90;
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #76d976;
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer h2 {
+      margin: 10px 0;
+    }
+
+    footer p {
+      margin: 10px 0 20px;
+      max-width: 600px;
+    }
+
+    footer a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+
+    footer a:hover {
+      color: #90ee90;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dessert</h1>
+  </header>
+
+  <div class="navbar">
+    <div class="logo">WellThy</div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menuall.html">Menu</a>
+      <a href="contactus.html">Contact Us</a>
+      <a href="aboutus.html">About Us</a>
+    </div>
+  </div>
+
+  <section class="menu">
+    <div class="card">
+      <img src="https://static.india.com/wp-content/uploads/2024/07/chocolate-walnut-brownie.jpg?impolicy=Medium_Widthonly&w=500&h=375" alt="Date & Nut Fudge Brownie" />
+      <div class="card-content">
+        <h2>Date & Nut Fudge Brownie (Gluten-Free)</h2>
+        <p><b>Fudgy, nutty, naturally sweet<br>Calories: ~290 kcal<br>Carbs: 24g</b></p>
+        <div class="price">Price: ₹150</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://bonnibakery.com/wp-content/uploads/2022/07/Pistachio-Cannoli_162-1-819x1024.jpg" alt="Kesar Pista Cannoli" />
+      <div class="card-content">
+          <h2>Kesar Pista Cannoli</h2>
+          <p><b>Italy rolled in Indian richness.<br>Calories : ~290 kcal (3 pieces)<br> Carbs : 28 g<br></b></p>
+          <div class="price">Price : ₹160</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <button>Add</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://images.ricardocuisine.com/services/recipes/496x670_158797360541b2e7062e78.jpg" alt="Espresso Almond Cheesecake" />
+      <div class="card-content">
+          <h2>Espresso Almond Cheesecake</h2>
+          <p><b>Bold, smooth, and bean-to-bake brilliance.<br>Calories : ~310 kcal<br> Carbs : 22g<br></b></p>
+          <div class="price">Price : ₹90</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <button>Add</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://www.ifyougiveablondeakitchen.com/wp-content/uploads/2022/07/easy-banana-cream-pie-1367x2048.webp" alt="Banana Pie" />
+      <div class="card-content">
+          <h2>Banana Pie</h2>
+          <p><b>Baked to the golden edge.<br>Calories : 330 kcal<br> Carbs : 22g<br></b></p>
+          <div class="price">Price : ₹40</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <button>Add</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://static.toiimg.com/thumb/53520122.cms?width=1200&height=900" alt="Almond Carnival Ice-cream" />
+      <div class="card-content">
+          <h2>Almond Carnival Ice-cream</h2>
+          <p><b>Crackly top. Gooey heart.<br>Calories : 290 kcal<br> Carbs: 34g<br></b></p>
+          <div class="price">Price : ₹150</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <button>Add</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://images.ricardocuisine.com/services/recipes/496x670_croissant1.jpg" alt="Butter Croissant" />
+      <div class="card-content">
+          <h2>Butter Croissant</h2>
+          <p><b>Flaky layers. Bold flavors.<br>Calories: 300kcal<br> Carbs:30g<br></b></p>
+          <div class="price">Price : ₹100</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <button>Add</button>
+      </div>
+  </div>
+  <div class="card">
+    <img src="https://www.foodandwine.com/thmb/XdFd-DvTtouryLCjeCqwhfmmK-A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/molten-chocolate-cake-FT-RECIPE0220-0a33d7d0ab0c45588f7bfe742d33a9bc.jpg" alt="Butter Croissant" />
+    <div class="card-content">
+        <h2>Chocolate Lava Cake</h2>
+        <p><b>Warm. Gooey. Perfect.<br>Calories: 350kcal<br> Carbs:38g<br></b></p>
+        <div class="price">Price : ₹150</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+          <i class="fa fa-star-o"></i>
+        </div>
+        <button>Add</button>
+    </div>
+</div>
+<div class="card">
+  <img src="https://xoxobella.com/wp-content/uploads/2024/10/Authentic-Italian-Tiramisu-featured.jpg" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Classic Tiramisu</h2>
+      <p><b>A creamy coffee dream.<br>Calories: 410kcal<br> Carbs:40g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+</div>
+<div class="card">
+  <img src="https://www.vegkit.com/wp-content/uploads/sites/2/2023/09/biscoff_cheesecake_1.jpg" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Biscoff Cheesecake</h2>
+      <p><b>Spiced cookie meets creamy bliss.<br>Calories: 430kcal<br> Carbs:40g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+</div>
+<div class="card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl4M5k28MjqPSwDt1eLUVWyLqFDSrSgmc0q_OwsMSrZ-o2WecjEmuSv07DzmmsQASGmS0&usqp=CAU" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Vanilla Bean Pudding</h2>
+      <p><b>Simple, pure, satisfying.<br>Calories: 290kcal<br> Carbs:30g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+</div>
+<div class="card">
+  <img src="https://images.squarespace-cdn.com/content/v1/61aa82e7f3032609f906ad55/ffe6d1f8-f1a3-408f-b4a6-d00c250a2b32/berry_panna_cotta.png" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Berry Panna Cotta</h2>
+      <p><b>Smooth, fruity, refreshing.<br>Calories: 270kcal<br> Carbs:22g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+</div>
+<div class="card">
+  <img src="https://addictedtodates.com/wp-content/uploads/2023/03/lemon-tartlets.jpg" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Lemon Tart</h2>
+      <p><b>Zingy, zesty, and sweet<br>Calories: 300kcal<br> Carbs:34g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+
+      <button>Add</button>
+  </div>
+  
+</div>
+<div class="card">
+  <img src="https://omnoms.ae/wp-content/uploads/2020/06/Mango-Cheesecake-Mousse-Cups-Feature.jpg" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Mango Mousse</h2>
+      <p><b>Tropical lightness in a cup.<br>Calories: 250kcal<br> Carbs:28g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+  
+</div>
+<div class="card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5j9Q0OnBYiDkSDn4Mg7Ud0FueS9XT4OcEQ&s" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Choco Chip cookie Sundae</h2>
+      <p><b>Crunch, melt, repeat.<br>Calories: 390kcal<br> Carbs:45g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+  
+</div>
+<div class="card">
+  <img src="https://www.cookwithnabeela.com/wp-content/uploads/2024/02/ChocolateDippedDoughnuts.webp" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Nutella Stuffed Donuts</h2>
+      <p>Soft. Sweet. Irresistible.<b>Crunch, melt, repeat.<br>Calories: 360kcal<br> Carbs:40g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+  
+</div>
+<div class="card">
+  <img src="https://static.toiimg.com/thumb/80877258.cms?imgsize=196788&width=800&height=800" alt="Butter Croissant" />
+  <div class="card-content">
+      <h2>Strawberry Shortcake Jar</h2>
+      <p>Strawberry Shortcake Jar<br>Calories: 330kcal<br> Carbs:40g<br></b></p>
+      <div class="price">Price : ₹125</div>
+      <div class="rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-alt"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <button>Add</button>
+  </div>
+  
+</div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <h2>WellThy</h2>
+      <p>Nourishing your body and your cravings — one bite at a time.</p>
+      <div>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>© 2025 WellThy. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

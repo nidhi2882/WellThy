@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunch Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      color: #333;
+      background-color: #333333a9;
+    }
+
+    header {
+      background-image: url('https://wallpapers.com/images/featured/lunch-background-nma33l5qphyng7rh.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+      margin-top: 83.5px;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      position: relative;
+      color: #fff;
+      font-size: 4rem;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .navbar {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 25px;
+      transition: 0.3s;
+      font-style: bold;
+    }
+
+    .nav-links a:hover {
+      color: #b8106c;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #000;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        padding: 10px 0;
+      }
+
+      .nav-toggle:checked + .hamburger + .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 50px 20px;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      background-color: #90ee90;
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #76d976;
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer h2 {
+      margin: 10px 0;
+    }
+
+    footer p {
+      margin: 10px 0 20px;
+      max-width: 600px;
+    }
+
+    footer a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+
+    footer a:hover {
+      color: #90ee90;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lunch</h1>
+  </header>
+
+  <div class="navbar">
+    <div class="logo">WellThy</div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menuall.html">Menu</a>
+      <a href="contactus.html">Contact Us</a>
+      <a href="aboutus.html">About Us</a>
+    </div>
+  </div>
+
+  <section class="menu">
+    <div class="card">
+      <img src="https://img.freepik.com/premium-photo/indian-grilled-paneer-tikka-beautifully-plated-dish_167857-55135.jpg" alt="BBQ paneer masala">
+      <div class="card-content">
+        <h2>BBQ Paneer Masala</h2>
+        <p><b>Smoky, spiced paneer indulgence with a barbeque twist.<br>Calories : 396Kcal <br>
+            Carbs:25g<br> </b></p>
+        <div class="price">Price : ₹150</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://carameltintedlife.com/wp-content/uploads/2020/11/Malai-Kofta-1-of-1-9.jpg" alt="Badami Korma">
+      <div class="card-content">
+        <h2>Badami Korma</h2>
+        <p><b>A royal blend of almonds and spice in every creamy spoonful.<br>
+          Calories : 450kcal<br>
+          Carbs : 40 g<br></b>
+          </p>
+        <div class="price">Price : ₹160</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://t3.ftcdn.net/jpg/09/45/46/72/360_F_945467264_13rCx2nGR9wb9wrVt2g2FEFB4tE4b8sW.jpg" alt="Olive cheese paratha">
+      <div class="card-content">
+        <h2>Olive cheese paratha</h2>
+        <p><b>Cheesy comfort meets a Mediterranean zing.<br>
+          Calories : 430 kcal<br>
+          Carbs : 30g<br></b>
+          </p>
+        <div class="price">Price : ₹90</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://t3.ftcdn.net/jpg/08/57/12/32/360_F_857123215_FL6fJK0bp5ZGlbDy2HEK9OhZOW8NA6Ez.jpg" alt="Garlic Naan">
+      <div class="card-content">
+        <h2>Garlic Naan</h2>
+        <p><b>Fluffy naan infused with garlicky warmth<br>
+          Calories : 270 kcal<br>
+          Carbs : 39g<br>
+          </b></p>
+        <div class="price">Price : ₹40</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://drewandcole.com/wp-content/uploads/2019/05/drew-and-cole-pressure-king-pro-dal-makhani-5L-menu.jpg" alt="Dal Makhani">
+      <div class="card-content">
+        <h2>Dal Makhani</h2>
+        <p><b> A creamy classic with a slow-cooked legacy<br>
+          Calories : 320 kcal<br>
+          Carbs: 26g<br>
+          </b></p>
+        <div class="price">Price : ₹150</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://www.indianveggiedelight.com/wp-content/uploads/2022/12/indian-lemon-quinoa-recipe.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Lemon Quinoa Rice</h2>
+        <p><b>Zesty freshness with a protein-powered grain.<br>
+          Calories: 240kcal<br>
+          Carbs:30g<br></b></p>
+        <div class="price">Price : ₹100</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/1214464511/photo/rajma-chawal-indian-vegan-food-directly-above-stock-photo.jpg?s=612x612&w=0&k=20&c=HbW81gCaNmrhLPgeG54jJr8aGThC9D9ymdFdKMpL1KI=" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Rajma Chawal</h2>
+<p><b>Comforting kidney bean curry served with steamed basmati rice.<br>
+Calories: 350kcal<br>
+Carbs: 55g<br></b></p>
+<div class="price">Price : ₹120</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://t3.ftcdn.net/jpg/09/82/71/66/360_F_982716634_04UFwbDpbgF083Yoc7B0PrXPlQLMDjJW.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Vegetable Biryani</h2>
+<p><b>Spiced basmati rice layered with assorted vegetables and herbs.<br>
+Calories: 400kcal<br>
+Carbs: 48g<br></b></p>
+<div class="price">Price : ₹130</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://www.shutterstock.com/image-photo/tasty-spicy-chana-pulao-pulav-600nw-1904225587.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Chana Pulao</h2>
+        <p><b>Aromatic rice with chickpeas, infused with spices and herbs.<br>
+        Calories: 350kcal<br>
+        Carbs: 47g<br></b></p>
+        <div class="price">Price : ₹110</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://i.pinimg.com/1200x/ce/34/8b/ce348b2f4bf95a5fabc314762ca74be3.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Pav Bhaji</h2>
+<p><b>Mumbai-style spiced vegetable mash served with buttered pav rolls.<br>
+Calories: 380kcal<br>
+Carbs: 50g<br></b></p>
+<div class="price">Price : ₹120</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://static.toiimg.com/thumb/80920657.cms?imgsize=251331&width=800&height=800" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Vada Pav</h2>
+<p><b>A spicy potato fritter in a soft bun, served with chutney.<br>
+Calories: 350kcal<br>
+Carbs: 45g<br></b></p>
+<div class="price">Price : ₹60</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://thumbs.dreamstime.com/b/traditional-rustic-food-dal-bati-churma-indian-traditional-vegetarian-meal-dal-bati-churma-served-rajasthan-sliced-onions-219474807.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Baati with Dal</h2>
+<p><b>Traditional Rajasthani baati served with flavorful dal and ghee.<br>
+Calories: 400kcal<br>
+Carbs: 50g<br></b></p>
+<div class="price">Price : ₹120</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://t4.ftcdn.net/jpg/02/14/74/35/360_F_214743578_Kdq8yjon2y5vzvr1xyw7Yi7z3SFRtYy3.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Ragda Pattice</h2>
+<p><b>Spicy white peas curry served with soft potato patties.<br>
+Calories: 300kcal<br>
+Carbs: 40g<br></b></p>
+<div class="price">Price : ₹90</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://thumbs.dreamstime.com/b/selective-focus-gujrati-dish-handvo-slice-tringle-cut-decorated-lemon-curry-leaves-mint-chutney-tomato-sauce-famous-320023073.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Vegetable Handvo</h2>
+<p><b>Gujarati savory cake made with lentils and rice flour, packed with veggies.<br>
+Calories: 280kcal<br>
+Carbs: 40g<br></b></p>
+<div class="price">Price : ₹90</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/1158601149/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=g15-G2o_8dkttQCautvPDwIPJKNHVtgpdBh-j18_6-c=" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Veg Thali</h2>
+<p><b>A wholesome platter with roti, rice, dal, vegetable curry, curd, and pickle.<br>
+Calories: 550kcal<br>
+Carbs: 65g<br></b></p>
+<div class="price">Price : ₹160</div>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://c4.wallpaperflare.com/wallpaper/707/206/339/food-lasagna-pasta-wallpaper-preview.jpg" alt="Lemon Quinoa Rice">
+      <div class="card-content">
+        <h2>Lasagna</h2>
+        <p><b>Layers of pasta, creamy sauce, vegetables, and cheese baked to perfection.<br>
+        Calories: 520kcal<br>
+        Carbs: 60g<br></b></p>
+        <div class="price">Price : ₹180</div>        
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-alt"></i>
+        </div>
+        <button>Add</button>
+      </div>
+    </div>
+  </section>
+  <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+        <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+      </div>
+      <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+        Nourishing your body and your cravings — one bite at a time.
+      </p>
+      <div style="margin-bottom: 25px;">
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

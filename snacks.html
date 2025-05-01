@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snacks Menu</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+  
+      body {
+        color: #333;
+        background-color: #333333a9;
+      }
+  
+      header {
+        background-image: url('https://w0.peakpx.com/wallpaper/301/236/HD-wallpaper-snacks-fruits-food.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        position: relative;
+        margin-top: 83.5px;
+      }
+  
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+  
+      header h1 {
+        position: relative;
+        color: #fff;
+        font-size: 4rem;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+  
+      .navbar {
+        background-color: #000000;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+  
+      .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 25px;
+      transition: 0.3s;
+      font-style: bold;
+    }
+  
+      .nav-links a:hover {
+        color: #b8106c;
+      }
+  
+      .nav-toggle {
+        display: none;
+      }
+  
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+      }
+  
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+      }
+  
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 60px;
+          right: 20px;
+          background-color: #000;
+          flex-direction: column;
+          width: 200px;
+          border-radius: 10px;
+          box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+          padding: 10px 0;
+        }
+  
+        .nav-toggle:checked + .hamburger + .nav-links {
+          display: flex;
+        }
+  
+        .hamburger {
+          display: flex;
+        }
+      }
+  
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(280px, 1fr));
+        gap: 40px;
+        padding: 50px 20px;
+        max-width: 1800px;
+        margin: 0 auto;
+      }
+  
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+  
+      .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+  
+      .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+  
+      .card-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+  
+      .card h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+  
+      .card p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+  
+      .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      .card button {
+        background-color: #90ee90;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      .card button:hover {
+        background-color: #76d976;
+      }
+  
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+      }
+  
+      footer .footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      footer h2 {
+        margin: 10px 0;
+      }
+  
+      footer p {
+        margin: 10px 0 20px;
+        max-width: 600px;
+      }
+  
+      footer a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 1.2rem;
+      }
+  
+      footer a:hover {
+        color: #90ee90;
+      }
+  
+      @media (max-width: 500px) {
+        header h1 {
+          font-size: 2.5rem;
+        }
+  
+        .nav-links a {
+          font-size: 18px;
+          padding: 8px 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">WellThy</div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menuall.html">Menu</a>
+        <a href="contactus.html">Contact Us</a>
+        <a href="aboutus.html">About Us</a>
+      </div>
+    </div>
+    <header>
+      <h1>Snacks</h1>
+    </header>
+    <section class="menu">
+      <div class="card">
+        <img src="https://wallpapers.com/images/hd/samosa-dish-lam87btpcko8m60h.jpg" alt="BBQ paneer masala">
+        <div class="card-content">
+          <h2>Samosa</h2>
+  <p><b>Fried triangular pastry filled with spiced potatoes, peas.<br>
+  Calories: 250kcal<br>
+  Carbs: 35g<br></b></p>
+  <div class="price">Price : ₹30</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://t4.ftcdn.net/jpg/09/97/94/67/360_F_997946752_lc1TvPzNZozzjrPWrjXYVxNUbNVLQb8n.jpg" alt="Badami Korma">
+        <div class="card-content">
+          <h2>Chaat Papri</h2>
+  <p><b>Crispy wafers topped with potatoes, yogurt, tamarind chutney, and sev.<br>
+  Calories: 220kcal<br>
+  Carbs: 30g<br></b></p>
+  <div class="price">Price : ₹70</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://cookwithrenu.com/wp-content/uploads/2020/09/Tea-Time-Pakora-Platter-_Featured-Image.jpg" alt="Olive cheese paratha">
+        <div class="card-content">
+          <h2>Pakora</h2>
+  <p><b>Fried fritters made with vegetables (onions, potatoes, spinach) dipped in chickpea flour batter.<br>
+  Calories: 200kcal<br>
+  Carbs: 25g<br></b></p>
+  <div class="price">Price : ₹60</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://media.istockphoto.com/id/1204868245/photo/street-food-of-india-potato-aloo-tikki-served-with-yogurt-closeup-in-a-plate-horizontal.jpg?s=612x612&w=0&k=20&c=oqTRL6H6nJa4iukd6DxOAw9fTwRb0NV0fBYhVrVYZLw=" alt="Garlic Naan">
+        <div class="card-content">
+          <h2>Aloo Tikki</h2>
+  <p><b>Fried potato patties spiced with various herbs, often served with chutneys.<br>
+  Calories: 220kcal<br>
+  Carbs: 30g<br></b></p>
+  <div class="price">Price : ₹40</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://st2.depositphotos.com/5653638/11508/i/450/depositphotos_115086216-stock-photo-pani-puri-or-panipuri-golgappe.jpg" alt="Dal Makhani">
+        <div class="card-content">
+          <h2>Pani Puri</h2>
+  <p><b>Crispy puris filled with spiced water, tamarind chutney, and potatoes — a beloved street snack.<br>
+  Calories: 150kcal<br>
+  Carbs: 30g<br></b></p>
+  <div class="price">Price : ₹50</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://img.freepik.com/free-photo/crispy-french-fries-with-ketchup-mayonnaise_1150-26588.jpg?semt=ais_hybrid&w=740" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>French Fries</h2>
+  <p><b>Crispy golden fried potato sticks, often served with ketchup or mayonnaise.<br>
+  Calories: 250kcal<br>
+  Carbs: 30g<br></b></p>
+  <div class="price">Price : ₹80</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2024/7/434740778/PQ/TE/PX/225954536/cheese-spring-rolls-8-inches.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Spring Rolls</h2>
+  <p><b>Deep-fried rolls filled with vegetables, served with sweet and sour dipping sauce.<br>
+  Calories: 300kcal<br>
+  Carbs: 35g<br></b></p>
+  <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://t4.ftcdn.net/jpg/06/21/86/43/360_F_621864330_WE1GJ2l5mI3t3DP2uJSo1Yo9FHvKz5y3.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Garlic Bread</h2>
+  <p><b>Toasted bread slices topped with butter, garlic, and herbs, often served as an appetizer.<br>
+  Calories: 300kcal<br>
+  Carbs: 35g<br></b></p>
+  <div class="price">Price : ₹90</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.freepik.com/premium-photo/platter-bruschetta-topped-with-variety-toppings_124507-138325.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Bruschetta</h2>
+          <p><b>Italian toasted bread topped with a mix of tomatoes, basil, and olive oil, often served as an appetizer.<br>
+          Calories: 180kcal<br>
+          Carbs: 25g<br></b></p>
+          <div class="price">Price : ₹100</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.freepik.com/premium-photo/crispy-onion-rings-with-ketchup_434193-4805.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Onion Rings</h2>
+  <p><b>Deep-fried, crispy onion slices coated in seasoned batter, often served with ketchup or dipping sauce.<br>
+  Calories: 250kcal<br>
+  Carbs: 35g<br></b></p>
+  <div class="price">Price : ₹80</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://t3.ftcdn.net/jpg/04/20/41/38/360_F_420413883_O55p404cg2NYGf9Gm5WB2QYEKJQTzgTD.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Bhakarwadi</h2>
+  <p><b>A crunchy, spiced snack from Maharashtra made with gram flour and a filling of coconut, sesame seeds, and spices.<br>
+  Calories: 150kcal<br>
+  Carbs: 20g<br></b></p>
+  <div class="price">Price : ₹60</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.spiceupthecurry.com/wp-content/uploads/2022/05/moong-dal-chilla-2.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Moong Dal Chilla</h2>
+  <p><b>Savory pancakes made from ground moong dal, often filled with vegetables or cheese.<br>
+  Calories: 180kcal<br>
+  Carbs: 30g<br></b></p>
+  <div class="price">Price : ₹70</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.freepik.com/premium-photo/crispy-paneer-popcorn-is-popular-party-snack-appetiser-selective-focus_466689-38600.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Paneer Popcorn</h2>
+  <p><b>Bite-sized paneer cubes coated in a crispy batter, deep-fried and served with dips.<br>
+  Calories: 280kcal<br>
+  Carbs: 20g<br></b></p>
+  <div class="price">Price : ₹130</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.freepik.com/premium-photo/chana-chor-jor-garam-indian-roadside-spicy-chat-snack-food-served-plate-bowl-colourful-wooden-background-selective-focus_466689-64766.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Chana Jor Garam</h2>
+          <p><b>Spicy and crispy black chickpeas, seasoned with salt, chili, and other spices, a popular snack from North India.<br>
+          Calories: 150kcal<br>
+          Carbs: 25g<br></b></p>
+          <div class="price">Price : ₹40</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://loveincorporated.blob.core.windows.net/contentimages/gallery/6b0a97dd-0f8f-402a-8436-65513a94b333-burgerone.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Burger</h2>
+  <p><b>A sandwich made with a bun, patty,tomato, cheese, and sauces.<br>
+  Calories: 350kcal<br>
+  Carbs: 45g<br></b></p>
+  <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.freepik.com/fotos-premium/tacos-com-carne-e-legumes_1339-75179.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Tacos</h2>
+          <p><b>A Mexican dish made of a folded tortilla filled with vegetables, salsa<br>
+          Calories: 250kcal<br>
+          Carbs: 35g<br></b></p>
+          <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+      <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+          <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+        </div>
+        <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+          Nourishing your body and your cravings — one bite at a time.
+        </p>
+        <div style="margin-bottom: 25px;">
+          <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

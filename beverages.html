@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bevrages Menu</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+  
+      body {
+        color: #333;
+        background-color: #333333a9;
+      }
+  
+      header {
+        background-image: url('https://images.unsplash.com/photo-1496318447583-f524534e9ce1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRyaW5rfGVufDB8fDB8fHww');
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        position: relative;
+        margin-top: 83.5px;
+      }
+  
+      header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+  
+      header h1 {
+        position: relative;
+        color: #fff;
+        font-size: 4rem;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+  
+      .navbar {
+        background-color: #000000;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+  
+      .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 25px;
+      transition: 0.3s;
+      font-style: bold;
+    }
+  
+      .nav-links a:hover {
+        color: #b8106c;
+      }
+  
+      .nav-toggle {
+        display: none;
+      }
+  
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+      }
+  
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+      }
+  
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 60px;
+          right: 20px;
+          background-color: #000;
+          flex-direction: column;
+          width: 200px;
+          border-radius: 10px;
+          box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+          padding: 10px 0;
+        }
+  
+        .nav-toggle:checked + .hamburger + .nav-links {
+          display: flex;
+        }
+  
+        .hamburger {
+          display: flex;
+        }
+      }
+  
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(280px, 1fr));
+        gap: 40px;
+        padding: 50px 20px;
+        max-width: 1800px;
+        margin: 0 auto;
+      }
+  
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+  
+      .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+  
+      .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+  
+      .card-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+  
+      .card h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+  
+      .card p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+  
+      .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      .card button {
+        background-color: #90ee90;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      .card button:hover {
+        background-color: #76d976;
+      }
+  
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+      }
+  
+      footer .footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      footer h2 {
+        margin: 10px 0;
+      }
+  
+      footer p {
+        margin: 10px 0 20px;
+        max-width: 600px;
+      }
+  
+      footer a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 1.2rem;
+      }
+  
+      footer a:hover {
+        color: #90ee90;
+      }
+  
+      @media (max-width: 500px) {
+        header h1 {
+          font-size: 2.5rem;
+        }
+  
+        .nav-links a {
+          font-size: 18px;
+          padding: 8px 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">WellThy</div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menuall.html">Menu</a>
+        <a href="contactus.html">Contact Us</a>
+        <a href="aboutus.html">About Us</a>
+      </div>
+    </div>
+    <header>
+      <h1>Beverages</h1>
+    </header>
+    <section class="menu">
+      <div class="card">
+        <img src="https://images.getrecipekit.com/20231228062459-mojito_mocktail_02.png?aspect_ratio=4:3&quality=90&" alt="BBQ paneer masala">
+        <div class="card-content">
+          <h2>Classic Lemon Mint Cooler</h2>
+  <p><b>Zesty, minty, and oh-so-refreshing.<br>
+  Calories: 60kcal<br>
+  Carbs: 15g<br></b></p>
+  <div class="price">Price : ₹30</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC3k1oreRRW2vStYjt2IucjboTioEbmSUvfA&s" alt="Badami Korma">
+        <div class="card-content">
+          <h2>Watermelon Basil Juice</h2>
+  <p><b>Cool hydration in every sip.<br>
+  Calories: 55kcal<br>
+  Carbs: 13g<br></b></p>
+  <div class="price">Price : ₹70</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/5/21/0/RX-PURELEAF_Minted-Melon-Iced-Honey-Green-Tea_s3x4.jpg.rend.hgtvcom.1280.960.suffix/1371616413745.webp" alt="Olive cheese paratha">
+        <div class="card-content">
+          <h2>Iced Green Tea with Honey & Lime</h2>
+  <p><b>Light, detoxing, naturally sweet.<br>
+  Calories: 45kcal<br>
+  Carbs: 11g<br></b></p>
+  <div class="price">Price : ₹60</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://imgeng.jagran.com/images/2024/10/20/article/image/benefits-of-soaking-chia-seeds-in-coconut-water-1729399317421.jpg" alt="Garlic Naan">
+        <div class="card-content">
+          <h2>Coconut Water with Chia Seeds</h2>
+  <p><b>Electrolytes meet texture.<br>
+  Calories: 80kcal<br>
+  Carbs: 14g<br></b></p>
+  <div class="price">Price : ₹40</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://www.pulpnest.in/wp-content/uploads/2023/04/orange-juice.webp" alt="Dal Makhani">
+        <div class="card-content">
+          <h2> Fresh Orange Juice</h2>
+  <p><b>A sunshine glass of vitamin C.<br>
+  Calories: 110kcal<br>
+  Carbs: 25g<br></b></p>
+  <div class="price">Price : ₹50</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+  
+      <div class="card">
+        <img src="https://www.shutterstock.com/image-photo/tropical-beach-view-fresh-coconut-260nw-2464855157.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Tender Coconut & Aloe Refresher</h2>
+  <p><b>Calm your gut, hydrate your soul<br>
+  Calories: 70kcal<br>
+  Carbs: 14g<br></b></p>
+  <div class="price">Price : ₹80</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.homemadefoodjunkie.com/wp-content/uploads/2023/07/cucumber-cooler-drink-2.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Cucumber Mint Cooler</h2>
+  <p><b>Crisp and cool, like a spa day.<br>
+  Calories: 50kcal<br>
+  Carbs: 15g<br></b></p>
+  <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://cdn.cdnparenting.com/articles/2020/02/28111427/Masala-Buttermilk-Recipe.webp" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Masala Buttermilk</h2>
+  <p><b>Spiced to refresh and digest.<br>
+  Calories: 80kcal<br>
+  Carbs: 8g<br></b></p>
+  <div class="price">Price : ₹90</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://amritfood.com/wp-content/uploads/2021/11/Cold-Coffee.png" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Cold Coffee</h2>
+          <p><b>Cool buzz, without the guilt.<br>
+          Calories: 120kcal<br>
+          Carbs: 18g<br></b></p>
+          <div class="price">Price : ₹100</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcujqpiM1_HvAEr9WKDJPXRYLz7DFGgLf3B9mkGINBDDkCjCL5aFANNjkhK3LOy-cqBhA&usqp=CAU" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Mango Mint Sparkle</h2>
+  <p><b>Fizzy, fruity, and fun.<br>
+  Calories: 110kcal<br>
+  Carbs: 24g<br></b></p>
+  <div class="price">Price : ₹80</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.ytimg.com/vi/tDlnovrxo0Y/maxresdefault.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Pineapple Ginger Cooler</h2>
+  <p><b>Tropical tang with a kick.<br>
+  Calories: 95kcal<br>
+  Carbs: 22g<br></b></p>
+  <div class="price">Price : ₹60</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://cookingwithawallflower.com/wp-content/uploads/2021/06/Guava-Rose-Lemonade-1.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2> Rose Lemonade</h2>
+  <p><b>Floral and fizzy bliss<br>
+  Calories: 90kcal<br>
+  Carbs: 20g<br></b></p>
+  <div class="price">Price : ₹70</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://media.istockphoto.com/id/629171940/photo/mojito-cocktail-with-pomegranate-mint-lemon-juice-and-ice-horizontal.jpg?s=612x612&w=0&k=20&c=_qMpT7EMaamTS3KEYXxGh8qJ6Rt3jYjuNexCel5c71g=" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Pomegranate Punch</h2>
+  <p><b>Bold in color, rich in antioxidants.<br>
+  Calories: 100kcal<br>
+  Carbs: 22g<br></b></p>
+  <div class="price">Price : ₹130</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBWXTu9-Kz61YJ0PCw2r6Lvsb3HKaMf2ux9SInBAWbVgmoOigvCg-jKUQxi3NJEB1CmW0&usqp=CAU" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2> Lychee Lime Sparkle</h2>
+          <p><b>A burst of sweet citrus.<br>
+          Calories: 95kcal<br>
+          Carbs: 21g<br></b></p>
+          <div class="price">Price : ₹40</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.heinens.com/content/uploads/2022/12/Strawberry-Banana-Yogurt-Smoothie_800x550.jpg" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Strawberry Yogurt Smoothie</h2>
+  <p><b>Fruity, filling, and fun.<br>
+  Calories:150kcal<br>
+  Carbs: 24g<br></b></p>
+  <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.chefkunalkapur.com/wp-content/uploads/2022/03/Jal-Jeera-recipe-scaled.jpg?v=1648097528" alt="Lemon Quinoa Rice">
+        <div class="card-content">
+          <h2>Jaljeera</h2>
+          <p><b>A tangy twist to tame the heat.<br>
+          Calories: ~250kcal per taco<br>
+          Carbs: 35g<br></b></p>
+          <div class="price">Price : ₹120</div>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+          </div>
+          <button>Add</button>
+        </div>
+      </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
+      <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <img src="ChatGPT Image Apr 12, 2025, 11_37_28 AM.png" alt="WellThy Logo" style="height: 40px;" />
+          <h2 style="font-size: 26px; font-weight: bold;">WellThy</h2>
+        </div>
+        <p style="font-size: 16px; max-width: 600px; margin-bottom: 30px;">
+          Nourishing your body and your cravings — one bite at a time.
+        </p>
+        <div style="margin-bottom: 25px;">
+          <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="font-size: 14px; color: #aaa;">© 2025 WellThy. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
